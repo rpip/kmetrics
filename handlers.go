@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"net/http"
 )
 
@@ -21,4 +22,19 @@ func HealthHandler(w http.ResponseWriter, req *http.Request, ctx AppContext) {
 		Version: ctx.Version,
 	}
 	ctx.Render.JSON(w, http.StatusOK, check)
+}
+
+// ListServicesHandler returns a list of pods running in the cluster in namespace default
+func ListServicesHandler(w http.ResponseWriter, req *http.Request, ctx AppContext) {
+	list, err := ctx.kube.GetPods("default")
+	if err != nil {
+		response := errorResponse{
+			Status:  "500",
+			Message: "can't find any users %d",
+		}
+		log.Println(err)
+		ctx.Render.JSON(w, http.StatusNotFound, response)
+		return
+	}
+	ctx.Render.JSON(w, http.StatusOK, list)
 }

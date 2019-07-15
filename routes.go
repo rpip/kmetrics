@@ -14,6 +14,6 @@ type Routes []Route
 var routes = Routes{
 	Route{"Health", "GET", "/health", HealthHandler},
 	// Kubernetes
-	//Route{"ListUsers", "GET", "/users", ListUsersHandler},
+	Route{"ListServices", "GET", "/services", ListServicesHandler},
 	//Route{"GetUser", "GET", "/users/{uid:[0-9]+}", GetUserHandler},
 }
