@@ -16,6 +16,13 @@ Now build the service or run directly
 $ make build # or go run .
 ```
 
+## Configuration
+
+Uses environment variables for config in line with the [12 Factor App](https://12factor.net).
+
+Manage this with the `.env` file in the repo.
+
+
 ## Tests
 
 ``` shell
@@ -28,20 +35,38 @@ $ make test
 
 `/services` endpoint to the service that exposes all pods running in the cluster in namespace `default`:
 
+Request: `GET /services`
+
+
+Response:
+
 ```
-GET `/services`
 [
   {
-    "name": "first",
-    "applicationGroup": "alpha",
-    "runningPodsCount": 2
-  },
-  {
-    "name": "second",
+    "name": "blissful-goodall-deployment",
     "applicationGroup": "beta",
     "runningPodsCount": 1
   },
-  ...
+  {
+    "name": "confident-cartwright-deployment",
+    "applicationGroup": "beta",
+    "runningPodsCount": 1
+  },
+  {
+    "name": "happy-colden-deployment",
+    "applicationGroup": "",
+    "runningPodsCount": 1
+  },
+  {
+    "name": "quirky-raman-deployment",
+    "applicationGroup": "gamma",
+    "runningPodsCount": 1
+  },
+  {
+    "name": "stoic-sammet-deployment",
+    "applicationGroup": "alpha",
+    "runningPodsCount": 2
+  }
 ]
 ```
 
@@ -49,14 +74,21 @@ GET `/services`
 
 `/services/{group}` exposes the pods in the cluster in namespace `default` that are part of the same `applicationGroup`:
 
+Request: `GET /services/{applicationGroup}`
+
+Response:
+
 ```
-GET `/services/{applicationGroup}`
 [
   {
-    "name": "foobar",
-    "applicationGroup": "<applicationGroup>",
+    "name": "blissful-goodall-deployment",
+    "applicationGroup": "beta",
     "runningPodsCount": 1
   },
-  ...
+  {
+    "name": "confident-cartwright-deployment",
+    "applicationGroup": "beta",
+    "runningPodsCount": 1
+  }
 ]
 ```
