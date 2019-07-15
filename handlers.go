@@ -1,8 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 // HandlerFunc extends the http.HandlerFunc
@@ -26,15 +29,34 @@ func HealthHandler(w http.ResponseWriter, req *http.Request, ctx AppContext) {
 
 // ListServicesHandler returns a list of pods running in the cluster in namespace default
 func ListServicesHandler(w http.ResponseWriter, req *http.Request, ctx AppContext) {
-	list, err := ctx.kube.GetPods("default")
+	pods, err := ctx.kube.GetServices("default", "")
 	if err != nil {
 		response := errorResponse{
 			Status:  "500",
-			Message: "can't find any users %d",
+			Message: "can't retrieve pods %d",
 		}
 		log.Println(err)
 		ctx.Render.JSON(w, http.StatusNotFound, response)
 		return
 	}
-	ctx.Render.JSON(w, http.StatusOK, list)
+	ctx.Render.JSON(w, http.StatusOK, pods)
+}
+
+// SearchServicesHandler returns a list of pods in the cluster in namespace default
+// that are part of the same applicationGroup:
+func SearchServicesHandler(w http.ResponseWriter, req *http.Request, ctx AppContext) {
+	vars := mux.Vars(req)
+	fmt.Println("===> group: ", vars["group"])
+
+	pods, err := ctx.kube.GetServices("default", vars["group"])
+	if err != nil {
+		response := errorResponse{
+			Status:  "500",
+			Message: "Pod search failed %d",
+		}
+		log.Println(err)
+		ctx.Render.JSON(w, http.StatusNotFound, response)
+		return
+	}
+	ctx.Render.JSON(w, http.StatusOK, pods)
 }

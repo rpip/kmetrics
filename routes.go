@@ -12,8 +12,10 @@ type Route struct {
 type Routes []Route
 
 var routes = Routes{
-	Route{"Health", "GET", "/health", HealthHandler},
-	// Kubernetes
+	// main endpoints
 	Route{"ListServices", "GET", "/services", ListServicesHandler},
-	//Route{"GetUser", "GET", "/users/{uid:[0-9]+}", GetUserHandler},
+	Route{"SearchServices", "GET", "/services/{group}", SearchServicesHandler},
+
+	// service health endpoint
+	Route{"Health", "GET", "/health", HealthHandler},
 }
