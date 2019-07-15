@@ -12,9 +12,9 @@ import (
 
 // Pod is an extraction of relevant fields from the Kubernetes pods structure
 type Pod struct {
-	Name             string `json: name`
-	ApplicationGroup string `json: applicationGroup`
-	RunningPodsCount int32  `json: runningPodsCount`
+	Name             string `json:"name"`
+	ApplicationGroup string `json:"applicationGroup"`
+	RunningPodsCount int32  `json:"runningPodsCount"`
 }
 
 // kubernetes will hold the connection info and methods for interacting with the cluster

@@ -2,7 +2,6 @@ package main
 
 import (
 	"log"
-	"os"
 	"path/filepath"
 
 	"github.com/joho/godotenv"
@@ -14,6 +13,9 @@ const (
 	appName  = "KMetrics"
 )
 
+// default path to kube config
+var kubeConfigPath = filepath.Join(homeDir(), ".kube", "config")
+
 // AppContext holds service configuration data
 type AppContext struct {
 	Render        *render.Render
@@ -22,21 +24,6 @@ type AppContext struct {
 	Port          string
 	isDevelopment bool
 	kube          *kubeClient
-}
-
-// Healthcheck represents information about the service health
-// can be extended to include system information
-type Healthcheck struct {
-	AppName string `json:"appName"`
-	Version string `json:"version"`
-}
-
-// errorResponse for more user-friendly errors to return to the user or propage
-// 404: Not found
-// 500: Internal Server Error
-type errorResponse struct {
-	Status  string `json:"status"`
-	Message string `json:"message"`
 }
 
 func main() {
@@ -59,7 +46,7 @@ func loadConfig() AppContext {
 		env         = getEnv("ENV", localEnv)
 		port        = getEnv("PORT", "3001")
 		versionFile = getEnv("VERSION", "VERSION")
-		kubeconfig  = getEnv("kubeconfig", filepath.Join(homeDir(), ".kube", "config"))
+		kubeconfig  = getEnv("kubeconfig", kubeConfigPath)
 	)
 
 	// read version from file
@@ -79,11 +66,4 @@ func loadConfig() AppContext {
 		kube:          NewKubeClient(kubeconfig),
 	}
 
-}
-
-func getEnv(key, fallback string) string {
-	if value, ok := os.LookupEnv(key); ok {
-		return value
-	}
-	return fallback
 }

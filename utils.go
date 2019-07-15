@@ -7,9 +7,11 @@ import (
 	"os"
 	"regexp"
 	"strings"
+	"unicode"
 
 	"github.com/gorilla/mux"
 	"github.com/pkg/errors"
+	"github.com/unrolled/render"
 	"github.com/unrolled/secure"
 	"github.com/urfave/negroni"
 )
@@ -72,4 +74,36 @@ func homeDir() string {
 		return h
 	}
 	return os.Getenv("USERPROFILE") // windows
+}
+
+func getEnv(key, fallback string) string {
+	if value, ok := os.LookupEnv(key); ok {
+		return value
+	}
+	return fallback
+}
+
+// CreateContextForTestSetup initialises an application context struct
+// for testing purposes
+func CreateContextForTestSetup() AppContext {
+	ctx := AppContext{
+		Render:        render.New(),
+		Version:       "0.0.0", // version for testing purposes
+		Env:           localEnv,
+		Port:          "3001",
+		isDevelopment: true,
+		kube:          NewKubeClient(kubeConfigPath),
+	}
+	return ctx
+}
+
+func stripSpaces(str string) string {
+	return strings.Map(func(r rune) rune {
+		if unicode.IsSpace(r) {
+			// if the character is a space, drop it
+			return -1
+		}
+		// else keep it in the string
+		return r
+	}, str)
 }

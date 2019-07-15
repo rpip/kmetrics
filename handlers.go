@@ -8,6 +8,21 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// Healthcheck represents information about the service health
+// can be extended to include system information
+type Healthcheck struct {
+	AppName string `json:"appName"`
+	Version string `json:"version"`
+}
+
+// errorResponse for more user-friendly errors to return to the user or propage
+// 404: Not found
+// 500: Internal Server Error
+type errorResponse struct {
+	Status  string `json:"status"`
+	Message string `json:"message"`
+}
+
 // HandlerFunc extends the http.HandlerFunc
 type HandlerFunc func(http.ResponseWriter, *http.Request, AppContext)
 
@@ -18,8 +33,8 @@ func makeHandler(ctx AppContext, fn func(http.ResponseWriter, *http.Request, App
 	}
 }
 
-// HealthHandler returns info about the app
-func HealthHandler(w http.ResponseWriter, req *http.Request, ctx AppContext) {
+// HealthCheckHandler returns info about the app
+func HealthCheckHandler(w http.ResponseWriter, req *http.Request, ctx AppContext) {
 	check := Healthcheck{
 		AppName: appName,
 		Version: ctx.Version,

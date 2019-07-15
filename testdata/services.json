@@ -1,0 +1,27 @@
+[
+  {
+    "name": "blissful-goodall-deployment",
+    "applicationGroup": "beta",
+    "runningPodsCount": 1
+  },
+  {
+    "name": "confident-cartwright-deployment",
+    "applicationGroup": "beta",
+    "runningPodsCount": 1
+  },
+  {
+    "name": "happy-colden-deployment",
+    "applicationGroup": "",
+    "runningPodsCount": 1
+  },
+  {
+    "name": "quirky-raman-deployment",
+    "applicationGroup": "gamma",
+    "runningPodsCount": 1
+  },
+  {
+    "name": "stoic-sammet-deployment",
+    "applicationGroup": "alpha",
+    "runningPodsCount": 2
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "name": "blissful-goodall-deployment",
+    "applicationGroup": "beta",
+    "runningPodsCount": 1
+  },
+  {
+    "name": "confident-cartwright-deployment",
+    "applicationGroup": "beta",
+    "runningPodsCount": 1
+  }
+]

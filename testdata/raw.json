@@ -1,0 +1,453 @@
+[
+  {
+    metadata: {
+      name: "blissful-goodall-deployment",
+      namespace: "default",
+      selfLink: "/apis/extensions/v1beta1/namespaces/default/deployments/blissful-goodall-deployment",
+      uid: "3d492036-8a93-4995-80d8-8c10e03ba855",
+      resourceVersion: "2606",
+      generation: 1,
+      creationTimestamp: "2019-07-14T23:18:38Z",
+      labels: {
+        applicationGroup: "beta",
+        service: "blissful-goodall"
+      },
+      annotations: {
+        "deployment.kubernetes.io/revision": "1"
+      }
+    },
+    spec: {
+      replicas: 1,
+      selector: {
+        matchLabels: {
+          service: "blissful-goodall"
+        }
+      },
+      template: {
+        metadata: {
+          creationTimestamp: null,
+          labels: {
+            service: "blissful-goodall"
+          }
+        },
+        spec: {
+          containers: [
+            {
+              name: "nginx",
+              image: "nginx:1.15.8",
+              ports: [
+                {
+                  containerPort: 80,
+                  protocol: "TCP"
+                }
+              ],
+              resources: { },
+              terminationMessagePath: "/dev/termination-log",
+              terminationMessagePolicy: "File",
+              imagePullPolicy: "IfNotPresent"
+            }
+          ],
+          restartPolicy: "Always",
+          terminationGracePeriodSeconds: 30,
+          dnsPolicy: "ClusterFirst",
+          securityContext: { },
+          schedulerName: "default-scheduler"
+        }
+      },
+      strategy: {
+        type: "RollingUpdate",
+        rollingUpdate: {
+          maxUnavailable: "25%",
+          maxSurge: "25%"
+        }
+      },
+      revisionHistoryLimit: 10,
+      progressDeadlineSeconds: 600
+    },
+    status: {
+      observedGeneration: 1,
+      replicas: 1,
+      updatedReplicas: 1,
+      readyReplicas: 1,
+      availableReplicas: 1,
+      conditions: [
+        {
+          type: "Available",
+          status: "True",
+          lastUpdateTime: "2019-07-14T23:21:57Z",
+          lastTransitionTime: "2019-07-14T23:21:57Z",
+          reason: "MinimumReplicasAvailable",
+          message: "Deployment has minimum availability."
+        },
+        {
+          type: "Progressing",
+          status: "True",
+          lastUpdateTime: "2019-07-14T23:21:57Z",
+          lastTransitionTime: "2019-07-14T23:18:38Z",
+          reason: "NewReplicaSetAvailable",
+          message: "ReplicaSet \"blissful-goodall-deployment-8697978576\" has successfully progressed."
+        }
+      ]
+    }
+  },
+  {
+    metadata: {
+      name: "confident-cartwright-deployment",
+      namespace: "default",
+      selfLink: "/apis/extensions/v1beta1/namespaces/default/deployments/confident-cartwright-deployment",
+      uid: "366f71a0-5b2c-4d2b-ad92-8fb7561ec1d6",
+      resourceVersion: "2590",
+      generation: 1,
+      creationTimestamp: "2019-07-14T23:18:38Z",
+      labels: {
+        applicationGroup: "beta",
+        service: "confident-cartwright"
+      },
+      annotations: {
+        "deployment.kubernetes.io/revision": "1"
+      }
+    },
+    spec: {
+      replicas: 1,
+      selector: {
+        matchLabels: {
+          service: "confident-cartwright"
+        }
+      },
+      template: {
+        metadata: {
+          creationTimestamp: null,
+          labels: {
+            service: "confident-cartwright"
+          }
+        },
+        spec: {
+          containers: [
+            {
+              name: "nginx",
+              image: "nginx:1.14.2",
+              ports: [
+                {
+                  containerPort: 80,
+                  protocol: "TCP"
+                }
+              ],
+              resources: { },
+              terminationMessagePath: "/dev/termination-log",
+              terminationMessagePolicy: "File",
+              imagePullPolicy: "IfNotPresent"
+            }
+          ],
+          restartPolicy: "Always",
+          terminationGracePeriodSeconds: 30,
+          dnsPolicy: "ClusterFirst",
+          securityContext: { },
+          schedulerName: "default-scheduler"
+        }
+      },
+      strategy: {
+        type: "RollingUpdate",
+        rollingUpdate: {
+          maxUnavailable: "25%",
+          maxSurge: "25%"
+        }
+      },
+      revisionHistoryLimit: 10,
+      progressDeadlineSeconds: 600
+    },
+    status: {
+      observedGeneration: 1,
+      replicas: 1,
+      updatedReplicas: 1,
+      readyReplicas: 1,
+      availableReplicas: 1,
+      conditions: [
+        {
+          type: "Available",
+          status: "True",
+          lastUpdateTime: "2019-07-14T23:21:49Z",
+          lastTransitionTime: "2019-07-14T23:21:49Z",
+          reason: "MinimumReplicasAvailable",
+          message: "Deployment has minimum availability."
+        },
+        {
+          type: "Progressing",
+          status: "True",
+          lastUpdateTime: "2019-07-14T23:21:49Z",
+          lastTransitionTime: "2019-07-14T23:18:38Z",
+          reason: "NewReplicaSetAvailable",
+          message: "ReplicaSet \"confident-cartwright-deployment-64c9bc8d\" has successfully progressed."
+        }
+      ]
+    }
+  },
+  {
+    metadata: {
+      name: "happy-colden-deployment",
+      namespace: "default",
+      selfLink: "/apis/extensions/v1beta1/namespaces/default/deployments/happy-colden-deployment",
+      uid: "d5db0b68-0da5-4f77-8497-2f0a773364c0",
+      resourceVersion: "2659",
+      generation: 1,
+      creationTimestamp: "2019-07-14T23:18:38Z",
+      annotations: {
+        "deployment.kubernetes.io/revision": "1"
+      }
+    },
+    spec: {
+      replicas: 1,
+      selector: {
+        matchLabels: {
+          service: "happy-colden"
+        }
+      },
+      template: {
+        metadata: {
+          creationTimestamp: null,
+          labels: {
+            service: "happy-colden"
+          }
+        },
+        spec: {
+          containers: [
+            {
+              name: "nginx",
+              image: "nginx:1.15.8",
+              ports: [
+                {
+                  containerPort: 80,
+                  protocol: "TCP"
+                }
+              ],
+              resources: { },
+              terminationMessagePath: "/dev/termination-log",
+              terminationMessagePolicy: "File",
+              imagePullPolicy: "IfNotPresent"
+            }
+          ],
+          restartPolicy: "Always",
+          terminationGracePeriodSeconds: 30,
+          dnsPolicy: "ClusterFirst",
+          securityContext: { },
+          schedulerName: "default-scheduler"
+        }
+      },
+      strategy: {
+        type: "RollingUpdate",
+        rollingUpdate: {
+          maxUnavailable: "25%",
+          maxSurge: "25%"
+        }
+      },
+      revisionHistoryLimit: 10,
+      progressDeadlineSeconds: 600
+    },
+    status: {
+      observedGeneration: 1,
+      replicas: 1,
+      updatedReplicas: 1,
+      readyReplicas: 1,
+      availableReplicas: 1,
+      conditions: [
+        {
+          type: "Available",
+          status: "True",
+          lastUpdateTime: "2019-07-14T23:22:25Z",
+          lastTransitionTime: "2019-07-14T23:22:25Z",
+          reason: "MinimumReplicasAvailable",
+          message: "Deployment has minimum availability."
+        },
+        {
+          type: "Progressing",
+          status: "True",
+          lastUpdateTime: "2019-07-14T23:22:25Z",
+          lastTransitionTime: "2019-07-14T23:18:38Z",
+          reason: "NewReplicaSetAvailable",
+          message: "ReplicaSet \"happy-colden-deployment-6cf99847fc\" has successfully progressed."
+        }
+      ]
+    }
+  },
+  {
+    metadata: {
+      name: "quirky-raman-deployment",
+      namespace: "default",
+      selfLink: "/apis/extensions/v1beta1/namespaces/default/deployments/quirky-raman-deployment",
+      uid: "92b23f77-162d-4ceb-a62e-ab6f83300442",
+      resourceVersion: "2644",
+      generation: 1,
+      creationTimestamp: "2019-07-14T23:18:38Z",
+      labels: {
+        applicationGroup: "gamma",
+        service: "quirky-raman"
+      },
+      annotations: {
+        "deployment.kubernetes.io/revision": "1"
+      }
+    },
+    spec: {
+      replicas: 1,
+      selector: {
+        matchLabels: {
+          service: "quirky-raman"
+        }
+      },
+      template: {
+        metadata: {
+          creationTimestamp: null,
+          labels: {
+            service: "quirky-raman"
+          }
+        },
+        spec: {
+          containers: [
+            {
+              name: "nginx",
+              image: "nginx:1.15.8",
+              ports: [
+                {
+                  containerPort: 80,
+                  protocol: "TCP"
+                }
+              ],
+              resources: { },
+              terminationMessagePath: "/dev/termination-log",
+              terminationMessagePolicy: "File",
+              imagePullPolicy: "IfNotPresent"
+            }
+          ],
+          restartPolicy: "Always",
+          terminationGracePeriodSeconds: 30,
+          dnsPolicy: "ClusterFirst",
+          securityContext: { },
+          schedulerName: "default-scheduler"
+        }
+      },
+      strategy: {
+        type: "RollingUpdate",
+        rollingUpdate: {
+          maxUnavailable: "25%",
+          maxSurge: "25%"
+        }
+      },
+      revisionHistoryLimit: 10,
+      progressDeadlineSeconds: 600
+    },
+    status: {
+      observedGeneration: 1,
+      replicas: 1,
+      updatedReplicas: 1,
+      readyReplicas: 1,
+      availableReplicas: 1,
+      conditions: [
+        {
+          type: "Available",
+          status: "True",
+          lastUpdateTime: "2019-07-14T23:22:18Z",
+          lastTransitionTime: "2019-07-14T23:22:18Z",
+          reason: "MinimumReplicasAvailable",
+          message: "Deployment has minimum availability."
+        },
+        {
+          type: "Progressing",
+          status: "True",
+          lastUpdateTime: "2019-07-14T23:22:18Z",
+          lastTransitionTime: "2019-07-14T23:18:38Z",
+          reason: "NewReplicaSetAvailable",
+          message: "ReplicaSet \"quirky-raman-deployment-766886b868\" has successfully progressed."
+        }
+      ]
+    }
+  },
+  {
+    metadata: {
+      name: "stoic-sammet-deployment",
+      namespace: "default",
+      selfLink: "/apis/extensions/v1beta1/namespaces/default/deployments/stoic-sammet-deployment",
+      uid: "2b66921f-3758-47cf-84c1-f6c25c0f2df3",
+      resourceVersion: "2626",
+      generation: 1,
+      creationTimestamp: "2019-07-14T23:18:38Z",
+      labels: {
+        applicationGroup: "alpha",
+        service: "stoic-sammet"
+      },
+      annotations: {
+        "deployment.kubernetes.io/revision": "1"
+      }
+    },
+    spec: {
+      replicas: 2,
+      selector: {
+        matchLabels: {
+          service: "stoic-sammet"
+        }
+      },
+      template: {
+        metadata: {
+          creationTimestamp: null,
+          labels: {
+            service: "stoic-sammet"
+          }
+        },
+        spec: {
+          containers: [
+            {
+              name: "nginx",
+              image: "nginx:1.15.8",
+              ports: [
+                {
+                  containerPort: 80,
+                  protocol: "TCP"
+                }
+              ],
+              resources: { },
+              terminationMessagePath: "/dev/termination-log",
+              terminationMessagePolicy: "File",
+              imagePullPolicy: "IfNotPresent"
+            }
+          ],
+          restartPolicy: "Always",
+          terminationGracePeriodSeconds: 30,
+          dnsPolicy: "ClusterFirst",
+          securityContext: { },
+          schedulerName: "default-scheduler"
+        }
+      },
+      strategy: {
+        type: "RollingUpdate",
+        rollingUpdate: {
+          maxUnavailable: "25%",
+          maxSurge: "25%"
+        }
+      },
+      revisionHistoryLimit: 10,
+      progressDeadlineSeconds: 600
+    },
+    status: {
+      observedGeneration: 1,
+      replicas: 2,
+      updatedReplicas: 2,
+      readyReplicas: 2,
+      availableReplicas: 2,
+      conditions: [
+        {
+          type: "Available",
+          status: "True",
+          lastUpdateTime: "2019-07-14T23:22:08Z",
+          lastTransitionTime: "2019-07-14T23:22:08Z",
+          reason: "MinimumReplicasAvailable",
+          message: "Deployment has minimum availability."
+        },
+        {
+          type: "Progressing",
+          status: "True",
+          lastUpdateTime: "2019-07-14T23:22:08Z",
+          lastTransitionTime: "2019-07-14T23:18:38Z",
+          reason: "NewReplicaSetAvailable",
+          message: "ReplicaSet \"stoic-sammet-deployment-6564bcc7c7\" has successfully progressed."
+        }
+      ]
+    }
+  }
+]
