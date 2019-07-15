@@ -10,7 +10,7 @@ import (
 	"k8s.io/client-go/tools/clientcmd"
 )
 
-// Pod is an extraction of relevant fields from the Kubernetes pods structure
+// Pod is a simplied version of the Kubernetes Pod
 type Pod struct {
 	Name             string `json:"name"`
 	ApplicationGroup string `json:"applicationGroup"`

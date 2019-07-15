@@ -1,6 +1,6 @@
-# Platform Developer Test
+# Kubernetes Platform Metrics
 
-This service exposes some information on the current state of the kubenertes cluster. Written in Go
+This service exposes some information on the current state of the kubernetes cluster. Written in Go
 
 ## Set up
 
