@@ -22,6 +22,7 @@ type kubeClient struct {
 	client *kubernetes.Clientset //typev1.CoreV1Interface
 }
 
+// NewKubeClient creates a new kubenertes client and wraps in our custom k8s struct
 func NewKubeClient(kubeconfig string) *kubeClient {
 	return &kubeClient{
 		client: getKubeClient(kubeconfig),
